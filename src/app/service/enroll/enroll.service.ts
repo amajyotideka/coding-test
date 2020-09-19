@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
+import { CONFIG_URL } from '../../../assets/global-config';
 import { Enrollee } from '../../component/modal/enrollee.modal';
 
 @Injectable({
@@ -9,18 +10,19 @@ import { Enrollee } from '../../component/modal/enrollee.modal';
 })
 export class EnrollService {
 
+  readonly serviceURL = CONFIG_URL;
   constructor(private httpClient: HttpClient) { }
 
   getEnrollees(): Observable<Enrollee[]> {
-    return this.httpClient.get<Enrollee[]>('http://localhost:8080/enrollees');
+    return this.httpClient.get<Enrollee[]>(this.serviceURL);
   }
 
   getEnrollee(id): Observable<Enrollee> {
-    return this.httpClient.get<Enrollee>(`http://localhost:8081/enrollees/${id}`);
+    return this.httpClient.get<Enrollee>(`${this.serviceURL}/${id}`);
   }
 
   updateEnrollee(enrollee: Enrollee) {
-    return this.httpClient.put(`http://localhost:8080/enrollees/${enrollee.id}`, enrollee);
+    return this.httpClient.put(`${this.serviceURL}/${enrollee.id}`, enrollee);
   }
 
 }
