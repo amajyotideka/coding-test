@@ -1,0 +1,39 @@
+.dialog-container-width {
+  width: 420px;
+}
+
+.form-input-padding {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.alert-message-style {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 640px) {
+  .dialog-container-width  {
+    width: 325px;
+  }
+
+  .form-input-padding {
+    padding: 0px;
+  }
+
+  .form-label-padding {
+    padding-left: 2px;
+  }
+}
+
+.button-group {
+  margin-top: 36px;
+}
+
+.save-button-align {
+  text-align: right;
+}
+
+.field-asterisk-style {
+  color: red;
+}

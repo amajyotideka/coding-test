@@ -1,0 +1,97 @@
+.enrollee-header{
+  text-align: center;
+}
+
+.table-container{
+  margin: 50px 75px 75px 75px;
+}
+
+@media screen and (max-width: 640px) {
+  .table-container{
+    margin: 0;
+  }
+}
+
+:host ::ng-deep {    
+  .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  :host ::ng-deep {
+    .p-datatable {
+      &.p-datatable-responsive-demo {
+        .p-datatable-thead > tr > th,
+        .p-datatable-tfoot > tr > td {
+          display: none !important;
+        }
+
+        .p-datatable-tbody > tr > td {
+          text-align: left;
+          display: block;
+          width: 100%;
+          float: left;
+          clear: left;
+          border: 0 none;
+
+          .p-column-title {
+            padding: .4rem;
+            min-width: 24%;
+            display: inline-block;
+            margin: -.4em 1em -.4em -.4rem;
+            font-weight: bold;
+          }
+
+          &:first-child {
+            border-top: 1px solid var(--surface-d);
+          }
+
+          &:last-child {
+            border-bottom: 1px solid var(--surface-d);
+          }
+        }
+      }
+    }
+  }
+  .edit-enroll {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 640px)  {
+  .edit-enroll {
+    padding: 6px;
+  }
+}
+
+.enrollee-status {
+  border-radius: 2px;
+  padding: .25em .5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+
+
+.enrollee-status-active {
+  background: #c8e6c9;
+  color: #256029;
+}
+
+.enrollee-status-inactive {
+  background: #ffcdd2;
+  color: #c63737;
+}
+
+:host ::ng-deep {
+  .p-toast {
+    width: 20rem;
+  }
+}
+
+.error-message-style {
+  text-align: center;
+}

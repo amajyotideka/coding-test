@@ -1,0 +1,110 @@
+<div class="dialog-container-width">
+  
+  <div class="alert-message-style">
+    <p-message *ngIf="isUpdateFailed" severity="error" text="Update failed. Please try again later."></p-message>
+  </div>
+  
+  <form
+    [formGroup]="enrolleeForm"
+    role="form"
+    (ngSubmit)="submit()">
+
+    <div class="p-fluid">
+      <div class="p-field p-grid">
+        <label
+          for="id-{{ enrrolleeData?.id }}"
+          class="p-col-12 p-mb-2 p-md-2 p-mb-md-0 form-label-padding">
+          Id
+          <span class="field-asterisk-style">*</span>
+        </label>
+
+        <div class="p-col-12 p-md-10 form-input-padding">
+          <input
+            pInputText
+            formControlName="id"
+            type="text"
+            id="id-{{ enrrolleeData?.id }}" />
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label
+          for="name-{{ enrrolleeData?.name }}"
+          class="p-col-12 p-mb-2 p-md-2 p-mb-md-0 form-label-padding">
+          Name
+          <span class="field-asterisk-style">*</span>
+        </label>
+
+        <div class="p-col-12 p-md-10 form-input-padding">
+          <input
+            pInputText
+            formControlName="name"
+            type="text"
+            id="name-{{ enrrolleeData?.name }}" />
+            
+            <small 
+              *ngIf="enrolleeForm?.controls.name.invalid && (enrolleeForm?.controls.name.dirty || enrolleeForm?.controls.name.touched)"
+              class="p-invalid">
+              Name is required.
+            </small>
+        </div>
+        
+      </div>
+
+      <div class="p-field p-grid">
+        <label
+          for="dob-{{ enrrolleeData?.dateOfBirth }}"
+          class="p-col-12 p-mb-2 p-md-2 p-mb-md-0 form-label-padding">
+          DOB
+        </label>
+
+        <div class="p-col-12 p-md-10 form-input-padding">
+          <input
+            pInputText
+            formControlName="dateOfBirth"
+            type="text"
+            id="dob-{{ enrrolleeData?.dateOfBirth }}" />
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label
+          for="active-{{ enrrolleeData?.active }}"
+          class="p-col-12 p-mb-2 p-md-2 p-mb-md-0 form-label-padding">
+          Active
+          <span class="field-asterisk-style">*</span>
+        </label>
+
+        <div class="p-col-12 p-md-10 form-input-padding">
+          <input type="radio" id="{{ (enrrolleeData.id) + '-1' }}" formControlName="active" [value]="true"> Yes
+          <input type="radio" id="{{ (enrrolleeData.id) + '-2' }}"  formControlName="active" [value]="false"> No
+        </div>
+      </div>
+    </div>
+
+
+    <div class="p-grid button-group">
+      <div class="p-col-6 save-button-align">
+        <button
+          pButton
+          pRipple
+          type="submit"
+          label="Update"
+          [disabled]="!enrolleeForm.valid"
+          class="p-button-raised">
+        </button>
+      </div>
+
+      <div class="p-col-6">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Close"
+          class="p-button-raised p-button-secondary"
+          (click)="onClose()">
+        </button>
+      </div>
+    </div>
+  </form>
+  </div>

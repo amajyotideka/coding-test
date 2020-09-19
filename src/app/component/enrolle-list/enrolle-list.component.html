@@ -1,0 +1,59 @@
+<h2 class="enrollee-header">Welcome to coding challenge</h2>
+
+<div class="error-message-style">
+  <p-message *ngIf="isFailedToGetEnrollee" severity="error" text="Failed to load. Please try again later."></p-message>
+</div>
+
+<div class="table-container">
+  <p-table
+    [columns]="cols"
+    [value]="enrolleeList"
+    styleClass="p-datatable-responsive-demo">
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th style="width:30%"> {{columns[0].header}} </th>
+        <th style="width:25%"> {{columns[1].header}} </th>
+        <th style="width:15%"> {{columns[2].header}} </th>
+        <th style="width:20%"> {{columns[3].header}} </th>
+        <th style="width:15%"> {{columns[4].header}} </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          <span class="p-column-title">{{col.header}}</span>
+
+          <span *ngIf="col.field === 'id' || col.field === 'name'">{{rowData[col.field]}}</span>
+
+          <span *ngIf="col.field === 'dateOfBirth'">{{rowData[col.field] | date}}</span>
+
+          <span *ngIf="col.field === 'active'">
+            <span *ngIf = "rowData.active" class="enrollee-status enrollee-status-active">Active</span>
+            <span *ngIf = "!rowData.active" class="enrollee-status enrollee-status-inactive">Inactive</span>
+          </span>
+
+          <span *ngIf="col.field === 'edit'">
+            <button pButton pRipple class="edit-enroll" label="Edit" icon="pi pi-pencil" (click)="openEditEnroll(rowData)"></button>  
+          </span>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog
+  *ngIf="display" 
+  header="Edit Enrollee Details"
+  [(visible)]="display"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true">
+  <app-edit-enrollee
+    [enrrolleeData]="selectedEnrollee"
+    (onHideDialog)="hideDialog($event)">
+  </app-edit-enrollee>
+</p-dialog>
+
+<p-toast></p-toast>
