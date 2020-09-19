@@ -1,5 +1,16 @@
-.enrollee-header{
+
+@mixin enrollee-page-style {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #3d5171;
+}
+
+.enrollee-page-header{
+  @include enrollee-page-style;
   text-align: center;
+}
+
+.enrollee-table-header-text{
+  @include enrollee-page-style;
 }
 
 .table-container{
@@ -13,13 +24,23 @@
 }
 
 :host ::ng-deep {    
+  .p-component {
+    font-size: 14px;
+  }
+  
   .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
     display: none;
   }
 }
 
+
+
 @media screen and (max-width: 640px) {
   :host ::ng-deep {
+    .id-font-style {
+      font-size: 11px;
+    }
+
     .p-datatable {
       &.p-datatable-responsive-demo {
         .p-datatable-thead > tr > th,

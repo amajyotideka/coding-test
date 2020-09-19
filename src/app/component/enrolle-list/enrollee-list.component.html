@@ -1,16 +1,16 @@
-<h2 class="enrollee-header">Welcome to coding challenge</h2>
+<h2 class="enrollee-page-header">Welcome to coding challenge</h2>
 
 <div class="error-message-style">
   <p-message *ngIf="failedToGetEnrollees" severity="error" text="Failed to load. Please try again later."></p-message>
 </div>
 
 <div class="table-container">
-  <h3>List of Enrollees</h3>
+  <h3 class="enrollee-table-header-text">List of Enrollees</h3>
 
   <p-table
     [columns]="tableColumns"
     [value]="enrolleeList"
-    styleClass="p-datatable-responsive-demo">
+    styleClass="p-datatable-responsive-demo p-datatable-striped">
 
     <ng-template pTemplate="header" let-columns>
       <tr>
@@ -38,9 +38,14 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
         <td *ngFor="let col of columns">
-          <span class="p-column-title">{{col.header}}</span>
+          <span *ngIf="col.field !== 'dateOfBirth'" class="p-column-title">{{col.header}}</span>
+          <span *ngIf="col.field === 'dateOfBirth'" class="p-column-title">DOB</span>
 
-          <span *ngIf="col.field === 'id' || col.field === 'name'">{{rowData[col.field]}}</span>
+          <span
+            *ngIf="col.field === 'id' || col.field === 'name'"
+            [ngClass]="{ 'id-font-style': col.field === 'id' }">
+            {{rowData[col.field]}}
+          </span>
 
           <span *ngIf="col.field === 'dateOfBirth'">{{rowData[col.field] | date}}</span>
 
