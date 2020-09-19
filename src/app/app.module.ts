@@ -15,13 +15,13 @@ import { MessageService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EnrolleListComponent } from './component/enrolle-list/enrolle-list.component';
+import { EnrolleeListComponent } from './component/enrolle-list/enrollee-list.component';
 import { EditEnrolleeComponent } from './component/edit-enrollee/edit-enrollee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EnrolleListComponent,
+    EnrolleeListComponent,
     EditEnrolleeComponent
   ],
   imports: [

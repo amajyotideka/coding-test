@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EnrolleListComponent } from './component/enrolle-list/enrolle-list.component';
+import { EnrolleeListComponent } from './component/enrolle-list/enrollee-list.component';
 
 const routes: Routes = [
   {
     path: 'enrollee-list',
-    component: EnrolleListComponent
+    component: EnrolleeListComponent
   },
   {
     path: '',

@@ -5,6 +5,8 @@
 </div>
 
 <div class="table-container">
+  <h3>List of Enrollees</h3>
+
   <p-table
     [columns]="tableColumns"
     [value]="enrolleeList"
@@ -13,9 +15,22 @@
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th style="width:30%"> {{columns[0].header}} </th>
-        <th style="width:25%"> {{columns[1].header}} </th>
-        <th style="width:15%"> {{columns[2].header}} </th>
-        <th style="width:20%"> {{columns[3].header}} </th>
+
+        <th pSortableColumn="{{columns[1].field}}" style="width:25%">
+          {{columns[1].header}}
+          <p-sortIcon field="{{columns[1].field}}"></p-sortIcon>
+        </th>
+
+        <th pSortableColumn="{{columns[2].field}}" style="width:15%">
+          {{columns[2].header}}
+          <p-sortIcon field="{{columns[2].field}}"></p-sortIcon>
+        </th>
+
+        <th pSortableColumn="{{columns[3].field}}" style="width:20%">
+          {{columns[3].header}}
+          <p-sortIcon field="{{columns[3].field}}"></p-sortIcon>
+        </th>
+
         <th style="width:15%"> {{columns[4].header}} </th>
       </tr>
     </ng-template>

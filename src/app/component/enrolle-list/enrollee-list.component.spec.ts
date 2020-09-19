@@ -1,17 +1,17 @@
 import { of, throwError } from 'rxjs';
 
-import { EnrolleListComponent } from './enrolle-list.component';
+import { EnrolleeListComponent } from './enrollee-list.component';
 import { Enrollee } from '../modal/enrollee.modal';
 
-describe('EnrolleListComponent', () => {
-  let component: EnrolleListComponent;
+describe('EnrolleeListComponent', () => {
+  let component: EnrolleeListComponent;
   let enrollServiceSpy: { getEnrollees: jasmine.Spy };
   let messageServiceSpy: { add: jasmine.Spy };
 
   beforeEach(() => {
     enrollServiceSpy = jasmine.createSpyObj('EnrollService', ['getEnrollees']);
     messageServiceSpy = jasmine.createSpyObj('MessageService', ['add']);
-    component = new EnrolleListComponent(enrollServiceSpy as any, messageServiceSpy as any);
+    component = new EnrolleeListComponent(enrollServiceSpy as any, messageServiceSpy as any);
   });
 
   it('should create', () => {

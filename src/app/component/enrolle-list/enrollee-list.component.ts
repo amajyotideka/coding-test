@@ -7,10 +7,10 @@ import { Enrollee } from '../modal/enrollee.modal';
 
 @Component({
   selector: 'app-enrolle-list',
-  templateUrl: './enrolle-list.component.html',
-  styleUrls: ['./enrolle-list.component.scss']
+  templateUrl: './enrollee-list.component.html',
+  styleUrls: ['./enrollee-list.component.scss']
 })
-export class EnrolleListComponent implements OnInit {
+export class EnrolleeListComponent implements OnInit {
   tableColumns: any[];
   enrolleeList: Enrollee[];
   showDialog = false;
