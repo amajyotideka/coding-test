@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { CONFIG_URL } from '../../../assets/global-config';
 import { Enrollee } from '../../component/modal/enrollee.modal';
@@ -21,8 +21,7 @@ export class EnrollService {
     return this.httpClient.get<Enrollee>(`${this.serviceURL}/${id}`);
   }
 
-  updateEnrollee(enrollee: Enrollee) {
-    return this.httpClient.put(`${this.serviceURL}/${enrollee.id}`, enrollee);
+  updateEnrollee(enrollee: Enrollee): Observable<Enrollee> {
+    return this.httpClient.put<Enrollee>(`${this.serviceURL}/${enrollee.id}`, enrollee);
   }
-
 }

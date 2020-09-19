@@ -40,7 +40,8 @@
             pInputText
             formControlName="name"
             type="text"
-            id="name-{{ enrrolleeData?.name }}" />
+            id="name-{{ enrrolleeData?.name }}" 
+            autofocus/>
             
             <small 
               *ngIf="enrolleeForm?.controls.name.invalid && (enrolleeForm?.controls.name.dirty || enrolleeForm?.controls.name.touched)"

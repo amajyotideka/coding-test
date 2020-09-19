@@ -13,10 +13,10 @@ import { EnrollService } from '../../service/enroll/enroll.service';
 export class EditEnrolleeComponent implements OnInit {
 
   @Input() enrrolleeData: Enrollee;
-  @Output() onHideDialog = new EventEmitter<boolean>();
+  @Output() hideDialog = new EventEmitter<boolean>();
 
   enrolleeForm: FormGroup;
-  isUpdateFailed: boolean = false;
+  isUpdateFailed = false;
 
   constructor(private enrollService: EnrollService) { }
 
@@ -35,11 +35,11 @@ export class EditEnrolleeComponent implements OnInit {
 
   submit(): void {
     this.isUpdateFailed = false;
-    if (this.enrolleeForm.valid && this.enrrolleeData) {
+    if (this.enrolleeForm?.valid && this.enrrolleeData) {
       const formRawValues: Enrollee = this.enrolleeForm.getRawValue();
       formRawValues.dateOfBirth = formRawValues?.dateOfBirth ? formatDate(formRawValues?.dateOfBirth, 'yyyy-MM-dd', 'en') : '';
       this.enrollService.updateEnrollee(formRawValues).subscribe((a: Enrollee) => {
-        this.onHideDialog.emit(true);
+        this.hideDialog.emit(true);
       }, () => {
         this.isUpdateFailed = true;
       });
@@ -47,6 +47,6 @@ export class EditEnrolleeComponent implements OnInit {
   }
 
   onClose(): void {
-    this.onHideDialog.emit(false);
+    this.hideDialog.emit(false);
   }
 }

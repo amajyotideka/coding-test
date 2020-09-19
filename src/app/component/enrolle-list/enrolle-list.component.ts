@@ -11,12 +11,11 @@ import { Enrollee } from '../modal/enrollee.modal';
   styleUrls: ['./enrolle-list.component.scss']
 })
 export class EnrolleListComponent implements OnInit {
-  cols: any[];
+  tableColumns: any[];
   enrolleeList: Enrollee[];
-
-  display: boolean = false;
+  showDialog = false;
   selectedEnrollee: Enrollee;
-  isFailedToGetEnrollee: boolean = false;
+  failedToGetEnrollees = false;
 
   constructor(
     private enrollService: EnrollService,
@@ -26,35 +25,35 @@ export class EnrolleListComponent implements OnInit {
 
     this.getListOfEnrollee();
 
-    this.cols = [
+    this.tableColumns = [
       { field: 'id', header: 'Id' },
       { field: 'name', header: 'Name' },
       { field: 'active', header: 'Status' },
       { field: 'dateOfBirth', header: 'Date Of  Birth' },
-      { field: 'edit', header: 'Edit' }
-  ];
+      { field: 'edit', header: 'Actions' }
+    ];
   }
 
   getListOfEnrollee(): void {
-    this.isFailedToGetEnrollee = false;
+    this.failedToGetEnrollees = false;
     this.enrolleeList = [];
     this.enrollService.getEnrollees().subscribe((enrolleeList: Enrollee[]) => {
       this.enrolleeList = enrolleeList;
     }, () => {
-      this.isFailedToGetEnrollee = true;
+      this.failedToGetEnrollees = true;
     });
   }
 
   openEditEnroll(rowData: Enrollee): void {
     this.selectedEnrollee = rowData;
-    this.display = true;
+    this.showDialog = true;
   }
 
-  hideDialog(isUpdatedSuccessfully: boolean): void {
+  onHideDialog(isUpdatedSuccessfully: boolean): void {
     if (isUpdatedSuccessfully) {
-      this.messageService.add({severity:'success', summary: 'Success', detail: 'Updated successfully'});
+      this.messageService.add({severity: 'success', summary: 'Success', detail: 'Updated successfully'});
       this.getListOfEnrollee();
     }
-    this.display = false;
+    this.showDialog = false;
   }
 }

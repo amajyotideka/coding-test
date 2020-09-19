@@ -1,12 +1,12 @@
 <h2 class="enrollee-header">Welcome to coding challenge</h2>
 
 <div class="error-message-style">
-  <p-message *ngIf="isFailedToGetEnrollee" severity="error" text="Failed to load. Please try again later."></p-message>
+  <p-message *ngIf="failedToGetEnrollees" severity="error" text="Failed to load. Please try again later."></p-message>
 </div>
 
 <div class="table-container">
   <p-table
-    [columns]="cols"
+    [columns]="tableColumns"
     [value]="enrolleeList"
     styleClass="p-datatable-responsive-demo">
 
@@ -44,15 +44,15 @@
 </div>
 
 <p-dialog
-  *ngIf="display" 
+  *ngIf="showDialog" 
   header="Edit Enrollee Details"
-  [(visible)]="display"
+  [(visible)]="showDialog"
   [draggable]="false"
   [resizable]="false"
   [modal]="true">
   <app-edit-enrollee
     [enrrolleeData]="selectedEnrollee"
-    (onHideDialog)="hideDialog($event)">
+    (hideDialog)="onHideDialog($event)">
   </app-edit-enrollee>
 </p-dialog>
 
